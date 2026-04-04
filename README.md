@@ -47,6 +47,7 @@ Notes:
 - You can also change `Diablo IV` to any folder name you want.
 - If `Agent UID` is the same as the product, you can leave it blank and press `Enter`.
 - The game folder is chosen here in the console input, not in the Battle.net launcher.
+- For `Game/Asset Language`, enter a locale code such as `ruRU`, `enUS`, `deDE`, `frFR`, `esES`, `ptBR`, `itIT`, `koKR`, `plPL`, `zhCN`, or `zhTW`.
 
 ## Command Line Example
 
