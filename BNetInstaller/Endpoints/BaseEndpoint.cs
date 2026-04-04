@@ -44,7 +44,7 @@ internal abstract class BaseEndpoint<T>(string endpoint, AgentClient client) whe
     {
         var content = await response.Content.ReadAsStringAsync();
 
-        JsonNode? result = null;
+        JsonNode result = null;
         try
         {
             result = JsonNode.Parse(content);
@@ -59,7 +59,7 @@ internal abstract class BaseEndpoint<T>(string endpoint, AgentClient client) whe
         return result!;
     }
 
-    private static int GetErrorCode(JsonNode? node)
+    private static int GetErrorCode(JsonNode node)
     {
         try
         {
@@ -74,16 +74,16 @@ internal abstract class BaseEndpoint<T>(string endpoint, AgentClient client) whe
 
     protected virtual void ValidateResponse(JsonNode response, string content)
     {
-        var agentError = GetErrorCode(response?["error"]);
+        var agentError = GetErrorCode(response["error"]);
 
         if (agentError <= 0)
             return;
 
         // see if bnet agent gives an error with the form payload
-        string? section = null;
+        string section = null;
         int sectionError = 0;
 
-        if (response?["form"] is JsonObject form)
+        if (response["form"] is JsonObject form)
         {
             foreach (var kvp in form)
             {

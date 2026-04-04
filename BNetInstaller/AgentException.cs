@@ -5,9 +5,9 @@ namespace BNetInstaller;
 internal sealed class AgentException : Exception
 {
     public int ErrorCode { get; }
-    public string? ResponseContent { get; }
+    public string ResponseContent { get; }
 
-    public AgentException(int errorCode, string message, string? responseContent = null, Exception? inner = null)
+    public AgentException(int errorCode, string message, string responseContent = null, Exception inner = null)
         : base(message, inner)
     {
         ErrorCode = errorCode;

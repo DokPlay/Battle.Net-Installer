@@ -43,7 +43,7 @@ internal static class Program
         }
 
         var localeCode = options.Locale.ToString().ToLowerInvariant();
-var mode = options.Repair ? Mode.Repair : Mode.Install;
+        var mode = options.Repair ? Mode.Repair : Mode.Install;
 
         Console.WriteLine("Authenticating");
         await app.AgentEndpoint.Get();
