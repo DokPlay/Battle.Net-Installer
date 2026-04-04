@@ -1,5 +1,7 @@
 # Battle.Net Installer
 
+[English](README.md) | [Русская версия](README.ru.md)
+
 Install, update, or repair Blizzard games through the locally installed Battle.net Agent.
 
 This repository is an unofficial maintenance fork of [barncastle/Battle.Net-Installer](https://github.com/barncastle/Battle.Net-Installer). It keeps the original project history intact and adds a maintained fix for Battle.net `Error 2310` plus a few install-flow quality improvements.
@@ -42,6 +44,18 @@ If you are using the prebuilt `EXE` from Releases, you do not need to install th
 3. Open `Command Prompt` or `PowerShell`.
 4. Change to the folder that contains the `EXE`.
 5. Run the command with your product values.
+
+### If You Double-Click the EXE
+
+If you start `BNetInstaller.exe` without command-line arguments, it opens a console window and asks for the required values one by one:
+
+1. `TACT Product`
+2. `Agent UID`
+3. `Installation Directory`
+4. `Game/Asset Language`
+5. `Repair Install? (Y/N)`
+
+You can leave `Agent UID` blank if it should match the TACT product.
 
 Command Prompt example:
 
