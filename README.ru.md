@@ -1,6 +1,6 @@
 # Battle.Net Installer
 
-[English](README.md) | [Русская версия](README.ru.md)
+[English version](README.md)
 
 Простая утилита для установки, обновления или восстановления игр Blizzard через локально установленный Battle.net Agent.
 
