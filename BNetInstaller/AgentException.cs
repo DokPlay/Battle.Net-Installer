@@ -16,6 +16,7 @@ internal sealed class AgentException : Exception
 
     public static string Describe(int errorCode) => errorCode switch
     {
+        2310 => "The Battle.net Agent rejected the install request.",
         2221 => "The supplied TACT Product is unavailable or invalid.",
         2421 => "Your computer doesn't meet the minimum specs and/or space requirements.",
         3001 => "The supplied TACT Product requires an encryption key which is missing.",

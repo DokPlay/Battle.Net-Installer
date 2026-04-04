@@ -7,19 +7,18 @@ internal sealed class InstallProductTask(Options options, AgentApp app) : AgentT
 
     protected override async Task<bool> InnerTask()
     {
-        if (await PrintProgress(_app.InstallEndpoint.Product))
-            return true;
-
         try
         {
             // initiate the download
             _app.UpdateEndpoint.Model.Uid = _options.UID;
             await _app.UpdateEndpoint.Post();
         }
-        catch (AgentException ex) when (ex.ErrorCode == 2421)
+        catch (AgentException ex) when (ex.ErrorCode is 2310 or 2421)
         {
-            Console.WriteLine("Agent returned 2421 (minimum specs and/or disk space requirement not met).");
-            Console.WriteLine("Double-check the install directory/drive has enough free space and that the product meets OS/hardware requirements.");
+            InstallDiagnostics.PrintAgentTroubleshooting(ex.ErrorCode);
+
+            if (ex.ErrorCode == 2310)
+                return false;
         }
 
         // first try the install endpoint

@@ -59,7 +59,7 @@ internal abstract class BaseEndpoint<T>(string endpoint, AgentClient client) whe
         return result!;
     }
 
-    private static int GetErrorCode(JsonNode node)
+    protected static int GetErrorCode(JsonNode node)
     {
         try
         {
