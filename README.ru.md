@@ -50,6 +50,7 @@ Repair Install? (Y/N, default N): n
 ## Схема установки
 
 ```mermaid
+%%{init: {'flowchart': {'defaultRenderer': 'elk'}} }%%
 flowchart LR
     subgraph LEFT["Подготовка"]
         direction TB

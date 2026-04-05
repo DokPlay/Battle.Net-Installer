@@ -50,6 +50,7 @@ What this means:
 ## Installation Flow
 
 ```mermaid
+%%{init: {'flowchart': {'defaultRenderer': 'elk'}} }%%
 flowchart LR
     subgraph LEFT["Prepare"]
         direction TB
