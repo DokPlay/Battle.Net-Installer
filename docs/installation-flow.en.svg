@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" role="img" aria-labelledby="title desc">
+  <title id="title">Installation Flow</title>
+  <desc id="desc">Two-column installation flow for BNetInstaller.</desc>
+  <defs>
+    <style>
+      .group { fill: #f6f8fa; stroke: #d0d7de; stroke-width: 2; rx: 18; }
+      .box { fill: #ffffff; stroke: #8c959f; stroke-width: 2; rx: 14; }
+      .title { font: 700 28px 'Segoe UI', Arial, sans-serif; fill: #24292f; }
+      .label { font: 600 20px 'Segoe UI', Arial, sans-serif; fill: #24292f; }
+      .text { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #24292f; text-anchor: middle; }
+      .arrow { stroke: #57606a; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#57606a"/>
+    </marker>
+  </defs>
+
+  <rect class="group" x="40" y="40" width="520" height="780"/>
+  <rect class="group" x="640" y="40" width="520" height="780"/>
+
+  <text class="title" x="300" y="86" text-anchor="middle">Prepare</text>
+  <text class="title" x="900" y="86" text-anchor="middle">Run</text>
+
+  <rect class="box" x="110" y="130" width="380" height="110"/>
+  <text class="text" x="300" y="182">
+    <tspan x="300" dy="0">Download</tspan>
+    <tspan x="300" dy="28">BNetInstaller.exe</tspan>
+  </text>
+
+  <line class="arrow" x1="300" y1="240" x2="300" y2="320"/>
+
+  <rect class="box" x="110" y="340" width="380" height="110"/>
+  <text class="text" x="300" y="406">
+    <tspan x="300" dy="0">Open the downloaded file</tspan>
+  </text>
+
+  <line class="arrow" x1="300" y1="450" x2="300" y2="530"/>
+
+  <rect class="box" x="90" y="550" width="420" height="180"/>
+  <text class="text" x="300" y="605">
+    <tspan x="300" dy="0">Enter product, UID,</tspan>
+    <tspan x="300" dy="28">install folder, language,</tspan>
+    <tspan x="300" dy="28">and repair choice</tspan>
+  </text>
+
+  <rect class="box" x="710" y="130" width="380" height="140"/>
+  <text class="text" x="900" y="190">
+    <tspan x="900" dy="0">Tool opens a local</tspan>
+    <tspan x="900" dy="28">Battle.net Agent session</tspan>
+  </text>
+
+  <line class="arrow" x1="900" y1="270" x2="900" y2="350"/>
+
+  <rect class="box" x="710" y="370" width="380" height="160"/>
+  <text class="text" x="900" y="430">
+    <tspan x="900" dy="0">Tool queues install,</tspan>
+    <tspan x="900" dy="28">update, or repair</tspan>
+  </text>
+
+  <line class="arrow" x1="900" y1="530" x2="900" y2="610"/>
+
+  <rect class="box" x="710" y="630" width="380" height="110"/>
+  <text class="text" x="900" y="696">
+    <tspan x="900" dy="0">Progress appears</tspan>
+    <tspan x="900" dy="28">in the console</tspan>
+  </text>
+</svg>

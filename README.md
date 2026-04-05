@@ -49,15 +49,7 @@ What this means:
 
 ## Installation Flow
 
-```mermaid
-flowchart TB
-    A["Download BNetInstaller.exe"] --> B["Open the downloaded file"]
-    B --> C["Enter product, UID, install folder, language, and repair choice"]
-    C --> D["Tool opens a local Battle.net Agent session"]
-    D --> E["Tool queues install, update, or repair"]
-    E --> F["Progress appears in the console"]
-    F --> G["If Error 2310 appears, retry with the same folder"]
-```
+[![Installation flow](docs/installation-flow.en.svg)](docs/installation-flow.en.svg)
 
 ## After Installation
 
