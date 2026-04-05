@@ -51,12 +51,15 @@ What this means:
 
 ```mermaid
 flowchart LR
-    A["Download BNetInstaller.exe"] --> B["Open the downloaded file"]
-    B --> C["Enter product, UID, install folder, language, and repair choice"]
-    C --> D["Tool opens a local Battle.net Agent session"]
-    D --> E["Tool queues install, update, or repair"]
-    E --> F["Progress appears in the console"]
-    F --> G["If Error 2310 appears, retry with the same folder"]
+    subgraph LEFT["Prepare"]
+        A["Download BNetInstaller.exe"] --> B["Open the downloaded file"] --> C["Enter product, UID, install folder, language, and repair choice"]
+    end
+
+    subgraph RIGHT["Run"]
+        D["Tool opens a local Battle.net Agent session"] --> E["Tool queues install, update, or repair"] --> F["Progress appears in the console"] --> G["If Error 2310 appears, retry with the same folder"]
+    end
+
+    C --> D
 ```
 
 ## After Installation
