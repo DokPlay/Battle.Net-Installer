@@ -50,12 +50,13 @@ What this means:
 ## Installation Flow
 
 ```mermaid
-graph LR
-    A["Download"] --> B["Open"]
-    B --> C["Enter values"]
-    C --> D["Agent"]
-    D --> E["Install or update"]
-    E --> F["Progress"]
+flowchart LR
+    A["Download BNetInstaller.exe"] --> B["Open the downloaded file"]
+    B --> C["Enter product, UID, install folder, language, and repair choice"]
+    C --> D["Tool opens a local Battle.net Agent session"]
+    D --> E["Tool queues install, update, or repair"]
+    E --> F["Progress appears in the console"]
+    F --> G["If Error 2310 appears, retry with the same folder"]
 ```
 
 ## After Installation
