@@ -56,8 +56,7 @@ flowchart TD
 
 This installer only handles the install/update flow. What appears in the Battle.net launcher is controlled by Battle.net itself, your account, and your region.
 
-> [!IMPORTANT]
-> If Diablo IV does not appear in Battle.net after installation, some users additionally rely on unofficial third-party utilities, for example `Blizzless Unlocker`.
+**IMPORTANT:** If Diablo IV does not appear in Battle.net after installation, some users additionally rely on unofficial third-party utilities, for example `Blizzless Unlocker`.
 
 1. Open the Battle.net app and go to `Diablo IV`.
 2. Click the gear icon next to `Play`.
