@@ -53,12 +53,14 @@ What this means:
 flowchart LR
     subgraph LEFT["Prepare"]
         direction TB
-        A["Download BNetInstaller.exe"] --> B["Open the downloaded file"] --> C["Enter product, UID, install folder, language, and repair choice"]
+        A["Download BNetInstaller.exe"] --> B["Open the downloaded file"]
+        B --> C["Enter product, UID, install folder, language, and repair choice"]
     end
 
     subgraph RIGHT["Run"]
         direction TB
-        D["Tool opens a local Battle.net Agent session"] --> E["Tool queues install, update, or repair"] --> F["Progress appears in the console"]
+        D["Tool opens a local Battle.net Agent session"] --> E["Tool queues install, update, or repair"]
+        E --> F["Progress appears in the console"]
     end
 
     C --> D
