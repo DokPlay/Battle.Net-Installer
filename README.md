@@ -49,30 +49,7 @@ What this means:
 
 ## Installation Flow
 
-```mermaid
-flowchart TB
-    subgraph FLOW[" "]
-        direction LR
-
-        subgraph LEFT["Prepare"]
-            direction TB
-            A["Download BNetInstaller.exe"]
-            B["Open the downloaded file"]
-            C["Enter product, UID, install folder, language, and repair choice"]
-            A --> B
-            B --> C
-        end
-
-        subgraph RIGHT["Run"]
-            direction TB
-            D["Tool opens a local Battle.net Agent session"]
-            E["Tool queues install, update, or repair"]
-            F["Progress appears in the console"]
-            D --> E
-            E --> F
-        end
-    end
-```
+[![Installation flow](docs/installation-flow.en.svg)](docs/installation-flow.en.svg)
 
 ## After Installation
 
