@@ -34,6 +34,8 @@ internal sealed partial class Options
 
 internal static class OptionsBinder
 {
+    private const string LocaleExamples = "enUS, ruRU, deDE, frFR";
+
     private static readonly Option<string> Product = new("--prod")
     {
         HelpName = "TACT Product",
@@ -79,29 +81,66 @@ internal static class OptionsBinder
         static string GetInput(string message)
         {
             Console.Write(message);
-            return Console.ReadLine()?.Trim().Trim('"');
+            return Console.ReadLine()?.Trim().Trim('"') ?? string.Empty;
+        }
+
+        static string GetRequiredInput(string message)
+        {
+            while (true)
+            {
+                var value = GetInput(message);
+
+                if (!string.IsNullOrWhiteSpace(value))
+                    return value;
+
+                Console.WriteLine("This value is required.");
+            }
+        }
+
+        static bool GetYesNo(string message)
+        {
+            while (true)
+            {
+                var value = GetInput(message);
+
+                if (string.IsNullOrWhiteSpace(value))
+                    return false;
+
+                if (value.StartsWith("Y", StringComparison.OrdinalIgnoreCase))
+                    return true;
+
+                if (value.StartsWith("N", StringComparison.OrdinalIgnoreCase))
+                    return false;
+
+                Console.WriteLine("Please enter Y or N.");
+            }
         }
 
         Console.WriteLine("Please complete the following information:");
+        Console.WriteLine("Press Enter on Agent UID if it should match the TACT Product.");
+        Console.WriteLine($"Locale examples: {LocaleExamples}");
+        Console.WriteLine();
+
+        var product = GetRequiredInput("TACT Product (example: s2): ");
+        var uid = GetInput("Agent UID (example: s2_enUS, blank = same as product): ");
+        var directory = GetRequiredInput("Installation Directory (example: D:\\Battle.net\\StarCraft II): ");
+        var locale = GetRequiredInput("Game/Asset Language (example: enUS): ");
+        var repair = GetYesNo("Repair Install? (Y/N, default N): ");
 
         var args = new string[9]
         {
             "--prod",
-            GetInput("TACT Product: "),
+            product,
             "--uid",
-            GetInput("Agent UID: "),
+            uid,
             "--dir",
-            GetInput("Installation Directory: "),
+            directory,
             "--lang",
-            GetInput("Game/Asset Language: "),
-            GetInput("Repair Install (Y/N): ").ToUpper()
+            locale,
+            repair ? "--repair" : string.Empty
         };
 
         Console.WriteLine();
-
-        // fix repair arg
-        if (args[8] is ['Y', ..])
-            args[8] = "--repair";
 
         return args;
     }
