@@ -4,22 +4,22 @@ internal sealed class InstallEndpoint(AgentClient client) : BaseProductEndpoint<
 {
     protected override void ValidateResponse(JsonNode response, string content)
     {
-        var agentError = response["error"]?.GetValue<float?>();
+        var agentError = GetErrorCode(response["error"]);
 
-        if (agentError.GetValueOrDefault() <= 0)
+        if (agentError <= 0)
             return;
 
         // try to identify the erroneous section
         foreach (var section in new[] { "authentication", "game_dir", "min_spec" })
         {
             var node = response["form"]?[section];
-            var errorCode = node?["error"]?.GetValue<float?>();
+            var errorCode = GetErrorCode(node?["error"]);
 
             if (errorCode > 0)
-                throw new Exception($"Agent Error: Unable to install - {errorCode} ({section}).", new(content));
+                throw new AgentException(agentError, $"Agent Error: Unable to install - {errorCode} ({section}).", content, new Exception(content));
         }
 
         // fallback to throwing a global error
-        throw new Exception($"Agent Error: {agentError}", new(content));
+        throw new AgentException(agentError, $"Agent Error: {agentError} - {AgentException.Describe(agentError)}", content, new Exception(content));
     }
 }

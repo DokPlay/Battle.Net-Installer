@@ -1,4 +1,4 @@
-﻿namespace BNetInstaller.Operations;
+namespace BNetInstaller.Operations;
 
 internal sealed class InstallProductTask(Options options, AgentApp app) : AgentTask<bool>(options)
 {
@@ -7,17 +7,30 @@ internal sealed class InstallProductTask(Options options, AgentApp app) : AgentT
 
     protected override async Task<bool> InnerTask()
     {
-        // initiate the download
-        _app.UpdateEndpoint.Model.Uid = _options.UID;
-        await _app.UpdateEndpoint.Post();
+        try
+        {
+            // initiate the download
+            _app.UpdateEndpoint.Model.Uid = _options.UID;
+            await _app.UpdateEndpoint.Post();
+        }
+        catch (AgentException ex) when (ex.ErrorCode is 2310 or 2421)
+        {
+            InstallDiagnostics.PrintAgentTroubleshooting(ex.ErrorCode);
+
+            if (ex.ErrorCode == 2310)
+                return false;
+        }
 
         // first try the install endpoint
         if (await PrintProgress(_app.InstallEndpoint.Product))
             return true;
 
         // then try the update endpoint instead
-        if (await PrintProgress(_app.UpdateEndpoint.Product))
-            return true;
+        if (_app.UpdateEndpoint.Product != null)
+        {
+            if (await PrintProgress(_app.UpdateEndpoint.Product))
+                return true;
+        }
 
         // failing that another agent or the BNet app has
         // probably taken control of the install
