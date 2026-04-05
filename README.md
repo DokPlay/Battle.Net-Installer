@@ -68,6 +68,8 @@ flowchart LR
         D --> E
         E --> F
     end
+
+    LEFT ~~~ RIGHT
 ```
 
 ## After Installation
