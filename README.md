@@ -57,7 +57,7 @@ flowchart TD
 This installer only handles the install/update flow. What appears in the Battle.net launcher is controlled by Battle.net itself, your account, and your region.
 
 > [!IMPORTANT]
-> **IMPORTANT:** If Diablo IV does not appear in Battle.net after installation, some users additionally rely on unofficial third-party utilities, for example `Blizzless Unlocker`.
+> If Diablo IV does not appear in Battle.net after installation, some users additionally rely on unofficial third-party utilities, for example `Blizzless Unlocker`.
 
 1. Open the Battle.net app and go to `Diablo IV`.
 2. Click the gear icon next to `Play`.
@@ -65,15 +65,6 @@ This installer only handles the install/update flow. What appears in the Battle.
 4. Choose the language you want for `Text Language`.
 5. Choose the language you want for `Spoken Language` if needed.
 6. Click `Done` and wait for Battle.net to download the required language files.
-
-## Error 2310
-
-If you get `Error 2310`:
-
-1. Make sure you are signed in to Battle.net.
-2. Run the tool again with the same folder.
-3. If the error still appears, open Battle.net and try `Locate the game` for that same folder.
-4. Then run `BNetInstaller.exe` again.
 
 ## Requirements
 
