@@ -6,6 +6,13 @@ Simple tool for installing, updating, or repairing Blizzard games through the lo
 
 This repository is an unofficial maintenance fork of [barncastle/Battle.Net-Installer](https://github.com/barncastle/Battle.Net-Installer) and includes a maintained fix for `Error 2310`.
 
+## Launch Tips
+
+- Install Battle.net and sign in at least once.
+- Download the release `BNetInstaller.exe` and keep it somewhere easy to find.
+- Double-click `BNetInstaller.exe`, then enter the requested values in the console.
+- Use the install folder you actually want for the game, then let the tool handle the rest.
+
 ## Download
 
 Download the latest `BNetInstaller.exe` from [Releases](https://github.com/DokPlay/Battle.Net-Installer/releases/latest).
@@ -43,7 +50,7 @@ What this means:
 ## Installation Flow
 
 ```mermaid
-flowchart TD
+flowchart TB
     A["Download BNetInstaller.exe"] --> B["Open the downloaded file"]
     B --> C["Enter product, UID, install folder, language, and repair choice"]
     C --> D["Tool opens a local Battle.net Agent session"]
@@ -52,14 +59,19 @@ flowchart TD
     F --> G["If Error 2310 appears, retry with the same folder"]
 ```
 
-## Error 2310
+## After Installation
 
-If you get `Error 2310`:
+This installer only handles the install/update flow. What appears in the Battle.net launcher is controlled by Battle.net itself, your account, and your region.
 
-1. Make sure you are signed in to Battle.net.
-2. Run the tool again with the same folder.
-3. If the error still appears, open Battle.net and try `Locate the game` for that same folder.
-4. Then run `BNetInstaller.exe` again.
+> [!IMPORTANT]
+> If Diablo IV does not appear in Battle.net after installation, some users additionally rely on unofficial third-party utilities, for example `Blizzless Unlocker`.
+
+1. Open the Battle.net app and go to `Diablo IV`.
+2. Click the gear icon next to `Play`.
+3. Open `Game Settings`.
+4. Choose the language you want for `Text Language`.
+5. Choose the language you want for `Spoken Language` if needed.
+6. Click `Done` and wait for Battle.net to download the required language files.
 
 ## Requirements
 
