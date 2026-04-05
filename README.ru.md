@@ -50,27 +50,28 @@ Repair Install? (Y/N, default N): n
 ## Схема установки
 
 ```mermaid
-%%{init: {'flowchart': {'defaultRenderer': 'elk'}} }%%
-flowchart LR
-    subgraph LEFT["Подготовка"]
-        direction TB
-        A["Скачать BNetInstaller.exe"]
-        B["Открыть скачанный файл"]
-        C["Ввести product, UID, папку установки, язык и выбор repair"]
-        A --> B
-        B --> C
-    end
+flowchart TB
+    subgraph FLOW[" "]
+        direction LR
 
-    subgraph RIGHT["Запуск"]
-        direction TB
-        D["Утилита открывает локальную сессию Battle.net Agent"]
-        E["Утилита ставит в очередь установку, обновление или восстановление"]
-        F["В консоли появляется прогресс"]
-        D --> E
-        E --> F
-    end
+        subgraph LEFT["Подготовка"]
+            direction TB
+            A["Скачать BNetInstaller.exe"]
+            B["Открыть скачанный файл"]
+            C["Ввести product, UID, папку установки, язык и выбор repair"]
+            A --> B
+            B --> C
+        end
 
-    LEFT ~~~ RIGHT
+        subgraph RIGHT["Запуск"]
+            direction TB
+            D["Утилита открывает локальную сессию Battle.net Agent"]
+            E["Утилита ставит в очередь установку, обновление или восстановление"]
+            F["В консоли появляется прогресс"]
+            D --> E
+            E --> F
+        end
+    end
 ```
 
 ## После установки

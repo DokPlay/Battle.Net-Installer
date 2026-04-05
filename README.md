@@ -50,27 +50,28 @@ What this means:
 ## Installation Flow
 
 ```mermaid
-%%{init: {'flowchart': {'defaultRenderer': 'elk'}} }%%
-flowchart LR
-    subgraph LEFT["Prepare"]
-        direction TB
-        A["Download BNetInstaller.exe"]
-        B["Open the downloaded file"]
-        C["Enter product, UID, install folder, language, and repair choice"]
-        A --> B
-        B --> C
-    end
+flowchart TB
+    subgraph FLOW[" "]
+        direction LR
 
-    subgraph RIGHT["Run"]
-        direction TB
-        D["Tool opens a local Battle.net Agent session"]
-        E["Tool queues install, update, or repair"]
-        F["Progress appears in the console"]
-        D --> E
-        E --> F
-    end
+        subgraph LEFT["Prepare"]
+            direction TB
+            A["Download BNetInstaller.exe"]
+            B["Open the downloaded file"]
+            C["Enter product, UID, install folder, language, and repair choice"]
+            A --> B
+            B --> C
+        end
 
-    LEFT ~~~ RIGHT
+        subgraph RIGHT["Run"]
+            direction TB
+            D["Tool opens a local Battle.net Agent session"]
+            E["Tool queues install, update, or repair"]
+            F["Progress appears in the console"]
+            D --> E
+            E --> F
+        end
+    end
 ```
 
 ## After Installation
