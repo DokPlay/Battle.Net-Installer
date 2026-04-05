@@ -6,6 +6,13 @@
 
 Этот репозиторий является неофициальным поддерживаемым форком [barncastle/Battle.Net-Installer](https://github.com/barncastle/Battle.Net-Installer) и содержит поддерживаемый фикс для `Error 2310`.
 
+## Советы по запуску
+
+- Установите Battle.net и один раз войдите в аккаунт.
+- Скачайте релизный `BNetInstaller.exe` и держите его в удобной папке.
+- Дважды нажмите `BNetInstaller.exe`, затем вводите значения в открывшейся консоли.
+- Сразу укажите ту папку, в которую хотите поставить игру, а дальше утилита всё сделает сама.
+
 ## Скачать
 
 Скачайте последний `BNetInstaller.exe` на странице [Releases](https://github.com/DokPlay/Battle.Net-Installer/releases/latest).

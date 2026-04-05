@@ -6,6 +6,13 @@ Simple tool for installing, updating, or repairing Blizzard games through the lo
 
 This repository is an unofficial maintenance fork of [barncastle/Battle.Net-Installer](https://github.com/barncastle/Battle.Net-Installer) and includes a maintained fix for `Error 2310`.
 
+## Launch Tips
+
+- Install Battle.net and sign in at least once.
+- Download the release `BNetInstaller.exe` and keep it somewhere easy to find.
+- Double-click `BNetInstaller.exe`, then enter the requested values in the console.
+- Use the install folder you actually want for the game, then let the tool handle the rest.
+
 ## Download
 
 Download the latest `BNetInstaller.exe` from [Releases](https://github.com/DokPlay/Battle.Net-Installer/releases/latest).
