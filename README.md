@@ -62,8 +62,6 @@ flowchart LR
         D["Tool opens a local Battle.net Agent session"] --> E["Tool queues install, update, or repair"]
         E --> F["Progress appears in the console"]
     end
-
-    C --> D
 ```
 
 ## After Installation
