@@ -8,6 +8,7 @@ internal sealed partial class Options
     public string Product { get; set; }
     public Locale Locale { get; set; }
     public string Directory { get; set; }
+    public string StatusDirectory { get; set; }
     public string UID { get; set; }
     public bool Repair { get; set; }
     public bool Verbose { get; set; }
@@ -26,6 +27,7 @@ internal sealed partial class Options
         Product = Product.ToLowerInvariant().Trim();
         UID = UID.ToLowerInvariant().Trim();
         Directory = Path.GetFullPath(Directory + "\\");
+        StatusDirectory ??= Directory;
     }
 
     [GeneratedRegex("\\(?_locale\\)?", RegexOptions.IgnoreCase)]
@@ -34,7 +36,7 @@ internal sealed partial class Options
 
 internal static class OptionsBinder
 {
-    private const string LocaleExamples = "enUS, ruRU, deDE, frFR";
+    private const string LocaleExamples = "ruRU, enUS, deDE, frFR";
 
     private static readonly Option<string> Product = new("--prod")
     {
@@ -56,8 +58,7 @@ internal static class OptionsBinder
 
     private static readonly Option<string> UID = new("--uid")
     {
-        HelpName = "Agent Product UID (Required if different to the TACT product)",
-        Required = true
+        HelpName = "Agent Product UID (defaults to the TACT product)"
     };
 
     private static readonly Option<bool> Repair = new("--repair")
@@ -121,28 +122,34 @@ internal static class OptionsBinder
         Console.WriteLine($"Locale examples: {LocaleExamples}");
         Console.WriteLine();
 
-        var product = GetRequiredInput("TACT Product (example: s2): ");
-        var uid = GetInput("Agent UID (example: s2_enUS, blank = same as product): ");
-        var directory = GetRequiredInput("Installation Directory (example: D:\\Battle.net\\StarCraft II): ");
-        var locale = GetRequiredInput("Game/Asset Language (example: enUS): ");
+        var product = GetRequiredInput("TACT Product (example: fenris): ");
+        var uid = GetInput("Agent UID (example: fenris, blank = same as product): ");
+        var directory = GetRequiredInput("Installation Directory (example: C:\\Diablo IV): ");
+        var locale = GetRequiredInput("Game/Asset Language (example: ruRU): ");
         var repair = GetYesNo("Repair Install? (Y/N, default N): ");
 
-        var args = new string[9]
+        var args = new List<string>
         {
             "--prod",
             product,
-            "--uid",
-            uid,
             "--dir",
             directory,
             "--lang",
-            locale,
-            repair ? "--repair" : string.Empty
+            locale
         };
+
+        if (!string.IsNullOrWhiteSpace(uid))
+        {
+            args.Add("--uid");
+            args.Add(uid);
+        }
+
+        if (repair)
+            args.Add("--repair");
 
         Console.WriteLine();
 
-        return args;
+        return args.ToArray();
     }
 
     public static RootCommand BuildRootCommand(Func<Options, Task> task)
@@ -172,7 +179,7 @@ internal static class OptionsBinder
             });
         });
 
-        rootCommand.TreatUnmatchedTokensAsErrors = false;
+        rootCommand.TreatUnmatchedTokensAsErrors = true;
 
         return rootCommand;
     }

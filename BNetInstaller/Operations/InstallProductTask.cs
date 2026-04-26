@@ -1,4 +1,4 @@
-namespace BNetInstaller.Operations;
+﻿namespace BNetInstaller.Operations;
 
 internal sealed class InstallProductTask(Options options, AgentApp app) : AgentTask<bool>(options)
 {
@@ -21,16 +21,10 @@ internal sealed class InstallProductTask(Options options, AgentApp app) : AgentT
                 return false;
         }
 
-        // first try the install endpoint
-        if (await PrintProgress(_app.InstallEndpoint.Product))
+        // Agent can expose progress on either endpoint depending on whether
+        // it treats the request as a fresh install or a continuation.
+        if (await PrintProgress(_app.InstallEndpoint.Product, _app.UpdateEndpoint.Product))
             return true;
-
-        // then try the update endpoint instead
-        if (_app.UpdateEndpoint.Product != null)
-        {
-            if (await PrintProgress(_app.UpdateEndpoint.Product))
-                return true;
-        }
 
         // failing that another agent or the BNet app has
         // probably taken control of the install

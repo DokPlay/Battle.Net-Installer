@@ -72,7 +72,7 @@ file class SnakeCaseNamingPolicy : JsonNamingPolicy
     {
         if (string.IsNullOrEmpty(name))
             return string.Empty;
-        
+
         Span<char> input = stackalloc char[0x100];
         Span<char> output = stackalloc char[0x100];
 

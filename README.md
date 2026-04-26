@@ -34,7 +34,7 @@ The program opens a console window and asks for values one by one. A typical run
 Please complete the following information:
 TACT Product (example: s2): fenris
 Agent UID (example: s2_enUS, blank = same as product): fenris
-Installation Directory (example: D:\Battle.net\StarCraft II): D:\Diablo IV
+Installation Directory (example: C:\Diablo IV): C:\Diablo IV
 Game/Asset Language (example: enUS): ruRU
 Repair Install? (Y/N, default N): n
 ```
@@ -43,7 +43,7 @@ What this means:
 
 - `fenris` is the value for `TACT Product (example: s2)`.
 - `fenris` is also the value for `Agent UID (example: s2_enUS, blank = same as product)`.
-- `D:\Diablo IV` is the value for `Installation Directory (example: D:\Battle.net\StarCraft II)`. You can use another drive or folder, for example `C:\Diablo IV` or `E:\Games\Diablo IV`.
+- `C:\Diablo IV` is the value for `Installation Directory (example: C:\Diablo IV)`. You can use another drive or folder, for example `D:\Diablo IV` or `E:\Games\Diablo IV`.
 - `ruRU` is the value for `Game/Asset Language (example: enUS)`. Other examples are `enUS`, `deDE`, `frFR`, `esES`, `ptBR`, `itIT`, `koKR`, `plPL`, `zhCN`, and `zhTW`.
 - `n` is the value for `Repair Install? (Y/N, default N)` and means no repair, because the game is not installed yet.
 
