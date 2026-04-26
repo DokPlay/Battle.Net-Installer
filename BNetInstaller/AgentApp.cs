@@ -10,6 +10,8 @@ namespace BNetInstaller;
 
 internal sealed class AgentApp : IDisposable
 {
+    private static readonly TimeSpan AgentStartTimeout = TimeSpan.FromSeconds(30);
+
     public readonly AgentEndpoint AgentEndpoint;
     public readonly InstallEndpoint InstallEndpoint;
     public readonly UpdateEndpoint UpdateEndpoint;
@@ -25,7 +27,7 @@ internal sealed class AgentApp : IDisposable
         if (!StartProcess(out _process, out _port))
         {
             Console.WriteLine("Please ensure Battle.net is installed and has recently been signed in to.");
-            Environment.Exit(0);
+            Environment.Exit(1);
         }
 
         _client = new(_port);
@@ -57,8 +59,16 @@ internal sealed class AgentApp : IDisposable
                 UseShellExecute = true,
             });
 
+            if (process == null)
+            {
+                Console.WriteLine("Unable to start Agent.exe.");
+                return false;
+            }
+
+            var stopwatch = Stopwatch.StartNew();
+
             // detect listening port
-            while (process is { HasExited: false } && port == -1)
+            while (process is { HasExited: false } && port == -1 && stopwatch.Elapsed < AgentStartTimeout)
             {
                 Thread.Sleep(250);
                 port = NativeMethods.GetProcessListeningPort(process.Id);
@@ -66,7 +76,12 @@ internal sealed class AgentApp : IDisposable
 
             if (process is not { HasExited: false } || port == -1)
             {
-                Console.WriteLine("Unable to connect to Agent.exe.");
+                if (port == -1)
+                    Console.WriteLine("Timed out waiting for Agent.exe to open its local control port.");
+                else
+                    Console.WriteLine("Unable to connect to Agent.exe.");
+
+                StopProcess(process);
                 return false;
             }
 
@@ -76,6 +91,21 @@ internal sealed class AgentApp : IDisposable
         {
             Console.WriteLine("Unable to start Agent.exe.");
             return false;
+        }
+    }
+
+    private static void StopProcess(Process process)
+    {
+        try
+        {
+            if (!process.HasExited)
+                process.Kill(entireProcessTree: true);
+        }
+        catch (InvalidOperationException)
+        {
+        }
+        catch (Win32Exception)
+        {
         }
     }
 
@@ -96,7 +126,7 @@ internal sealed class AgentApp : IDisposable
     public void Dispose()
     {
         if (_process?.HasExited == false)
-            _process.Kill();
+            StopProcess(_process);
 
         _client?.Dispose();
         _process?.Dispose();

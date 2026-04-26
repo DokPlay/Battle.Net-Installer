@@ -34,7 +34,7 @@
 Please complete the following information:
 TACT Product (example: s2): fenris
 Agent UID (example: s2_enUS, blank = same as product): fenris
-Installation Directory (example: D:\Battle.net\StarCraft II): D:\Diablo IV
+Installation Directory (example: C:\Diablo IV): C:\Diablo IV
 Game/Asset Language (example: enUS): ruRU
 Repair Install? (Y/N, default N): n
 ```
@@ -43,7 +43,7 @@ Repair Install? (Y/N, default N): n
 
 - `fenris` - это значение для `TACT Product (example: s2)`.
 - `fenris` - это также значение для `Agent UID (example: s2_enUS, blank = same as product)`.
-- `D:\Diablo IV` - это значение для `Installation Directory (example: D:\Battle.net\StarCraft II)`. Можно указать другой диск или другую папку, например `C:\Diablo IV` или `E:\Games\Diablo IV`.
+- `C:\Diablo IV` - это значение для `Installation Directory (example: C:\Diablo IV)`. Можно указать другой диск или другую папку, например `D:\Diablo IV` или `E:\Games\Diablo IV`.
 - `ruRU` - это значение для `Game/Asset Language (example: enUS)`. Ещё примеры: `enUS`, `deDE`, `frFR`, `esES`, `ptBR`, `itIT`, `koKR`, `plPL`, `zhCN`, `zhTW`.
 - `n` - это значение для `Repair Install? (Y/N, default N)` и означает, что восстановление не нужно, потому что игра ещё не установлена.
 

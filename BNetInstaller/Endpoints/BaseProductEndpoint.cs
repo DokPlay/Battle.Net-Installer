@@ -8,6 +8,10 @@ internal abstract class BaseProductEndpoint<T>(string endpoint, AgentClient clie
     {
         var content = await base.Post();
         Product = ProductEndpoint.CreateFromResponse(content, Client);
+
+        if (Product == null)
+            throw new AgentException(0, "Agent Error: response_uri was missing from the Agent response.", content?.ToJsonString());
+
         return content;
     }
 }
